@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AutoCollapse</name>
+    </assembly>
+    <members>
+        <member name="T:AutoCollapse.Connect">
+            <summary>The object for implementing an Add-in.</summary>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AutoCollapse.Connect.#ctor">
+            <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
+        </member>
+        <member name="M:AutoCollapse.Connect.OnConnection(System.Object,Extensibility.ext_ConnectMode,System.Object,System.Array@)">
+            <summary>Implements the OnConnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being loaded.</summary>
+            <param term='application'>Root object of the host application.</param>
+            <param term='connectMode'>Describes how the Add-in is being loaded.</param>
+            <param term='addInInst'>Object representing this Add-in.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AutoCollapse.Connect.OnDisconnection(Extensibility.ext_DisconnectMode,System.Array@)">
+            <summary>
+            Called when [disconnection].
+            </summary>
+            <param name="disconnectMode">The disconnect mode.</param>
+            <param name="custom">The custom.</param>
+        </member>
+        <member name="M:AutoCollapse.Connect.OnAddInsUpdate(System.Array@)">
+            <summary>Implements the OnAddInsUpdate method of the IDTExtensibility2 interface. Receives notification when the collection of Add-ins has changed.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />		
+        </member>
+        <member name="M:AutoCollapse.Connect.OnStartupComplete(System.Array@)">
+            <summary>Implements the OnStartupComplete method of the IDTExtensibility2 interface. Receives notification that the host application has completed loading.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AutoCollapse.Connect.OnBeginShutdown(System.Array@)">
+            <summary>Implements the OnBeginShutdown method of the IDTExtensibility2 interface. Receives notification that the host application is being unloaded.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:AutoCollapse.Connect.OnWindowCreated(EnvDTE.Window)">
+            <summary>
+            Called when window created.
+            </summary>
+            <param name="window">The window.</param>
+        </member>
+        <member name="M:AutoCollapse.Connect.OnDocumentOpened(EnvDTE.Document)">
+            <summary>
+            Called when document opened.
+            </summary>
+            <param name="document">The document.</param>
+        </member>
+    </members>
+</doc>
