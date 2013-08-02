@@ -46,5 +46,21 @@
             </summary>
             <param name="window">The window.</param>
         </member>
+        <member name="M:AutoCollapse.Connect.OnSolutionOpened">
+            <summary>
+            Called when [solution opened].
+            </summary>
+        </member>
+        <member name="M:AutoCollapse.Connect.CollapseToDefinitions(EnvDTE.Window)">
+            <summary>
+            Collapses to definitions.
+            </summary>
+        </member>
+        <member name="M:AutoCollapse.Connect.TryExecuteCommand(System.String)">
+            <summary>
+            Tries the execute command.
+            </summary>
+            <param name="command">The command.</param>
+        </member>
     </members>
 </doc>

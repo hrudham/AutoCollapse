@@ -46,17 +46,11 @@
             </summary>
             <param name="window">The window.</param>
         </member>
-        <member name="M:AutoCollapse.Connect.OnDocumentOpened(EnvDTE.Document)">
+        <member name="M:AutoCollapse.Connect.TryExecuteCommand(System.String)">
             <summary>
-            Called when document opened.
+            Tries the execute command.
             </summary>
-            <param name="document">The document.</param>
-        </member>
-        <member name="M:AutoCollapse.Connect.Collapse(System.Object)">
-            <summary>
-            Collapses the specified target.
-            </summary>
-            <param name="target">The target.</param>
+            <param name="command">The command.</param>
         </member>
     </members>
 </doc>

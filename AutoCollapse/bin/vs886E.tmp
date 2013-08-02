@@ -40,17 +40,17 @@
             <param term='custom'>Array of parameters that are host application specific.</param>
             <seealso class='IDTExtensibility2' />
         </member>
-        <member name="M:AutoCollapse.Connect.WindowCreated(EnvDTE.Window)">
+        <member name="M:AutoCollapse.Connect.OnWindowCreated(EnvDTE.Window)">
             <summary>
-            Windows the created.
+            Called when window created.
             </summary>
-            <param name="Window">The window.</param>
+            <param name="window">The window.</param>
         </member>
-        <member name="M:AutoCollapse.Connect.Collapse(System.Object)">
+        <member name="M:AutoCollapse.Connect.TryExecuteCommand(System.String)">
             <summary>
-            Collapses the specified target.
+            Tries the execute command.
             </summary>
-            <param name="target">The target.</param>
+            <param name="command">The command.</param>
         </member>
     </members>
 </doc>

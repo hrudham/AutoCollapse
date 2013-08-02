@@ -16,6 +16,7 @@ namespace AutoCollapse
         private DTE2 _applicationObject;
         private AddIn _addInInstance;
         private WindowEvents _windowEvents;
+        private SolutionEvents _solutionEvents;
         private HashSet<string> _targets = new HashSet<string>();
 
         #endregion
@@ -43,6 +44,9 @@ namespace AutoCollapse
 
             _windowEvents = _applicationObject.Events.WindowEvents;
             _windowEvents.WindowCreated += OnWindowCreated;
+
+            _solutionEvents = _applicationObject.Events.SolutionEvents;
+            _solutionEvents.Opened += OnSolutionOpened;
         }
 
         /// <summary>
@@ -81,35 +85,66 @@ namespace AutoCollapse
         /// <param name="window">The window.</param>
         private void OnWindowCreated(Window window)
         {
-            if (this._applicationObject.Debugger.CurrentMode != dbgDebugMode.dbgBreakMode)
+            // Only collapse outlines if we are not in debug mode, and the
+            // window that opened this window was the solution explorer.
+            if (this._applicationObject.Debugger.CurrentMode != dbgDebugMode.dbgBreakMode &&
+                this._applicationObject.ActiveWindow.ObjectKind == EnvDTE.Constants.vsWindowKindSolutionExplorer)
+            {
+                CollapseToDefinitions(window);
+            }
+        }
+
+        /// <summary>
+        /// Called when [solution opened].
+        /// </summary>
+        private void OnSolutionOpened()
+        {
+            foreach (Window window in this._applicationObject.Windows)
+            {
+                CollapseToDefinitions(window);
+            }
+        }
+        
+        /// <summary>
+        /// Collapses to definitions.
+        /// </summary>
+        private void CollapseToDefinitions(Window window)
+        {
+            if (window.ObjectKind == EnvDTE.Constants.vsDocumentKindText)
             {
                 var document = window.Document as Document;
 
-                // To get the text document: ((TextDocument)document.Object(string.Empty))
-
                 if (document != null && document.Type == "Text")
                 {
-                    ThreadPool.QueueUserWorkItem(
-                        new WaitCallback(
-                            delegate(object obj) 
-                            {
-                                try
-                                {
-                                    this._applicationObject.ExecuteCommand("Edit.StartAutomaticOutlining");
-                                }
-                                catch
-                                {
-                                }
+                    var textDocument = document.Object("") as TextDocument;
 
-                                try
+                    if (textDocument != null)
+                    {
+                        ThreadPool.QueueUserWorkItem(
+                            new WaitCallback(
+                                delegate(object obj)
                                 {
-                                    this._applicationObject.ExecuteCommand("Edit.CollapsetoDefinitions");
-                                }
-                                catch
-                                { 
-                                }
-                            }));
+                                    this.TryExecuteCommand("Edit.StopOutlining");
+                                    this.TryExecuteCommand("Edit.StartAutomaticOutlining");
+                                    this.TryExecuteCommand("Edit.CollapsetoDefinitions");
+                                }));
+                    }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Tries the execute command.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        private void TryExecuteCommand(string command)
+        {
+            try
+            {
+                this._applicationObject.ExecuteCommand(command);
+            }
+            catch
+            {
             }
         }
                 
