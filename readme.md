@@ -15,3 +15,12 @@ It basically runs the `Edit -> Outlining -> Start Automatic Outling` and `Edit -
 I threw this together for my own convenience. I do not plan to continue developing this further, unless I personally encounter a bug that irritates me enough to fix it. Use this at your own risk, and feel free to fork the repository.
 
 I also have no idea if it will work on older versions of Visual Studio.
+
+## Install
+
+To install this add-in:
+
+1. Build the solution.
+2. Find the `AutoCollapse.AddIn` file, and the built `AutoCollapse.dll` file.
+3. Copy these two files to `[My Documents]\Visual Studio 2012\Addins`.
+4. Open (or restart) Visual Studio 2012.

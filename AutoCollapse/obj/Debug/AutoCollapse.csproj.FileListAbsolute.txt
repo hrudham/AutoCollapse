@@ -1,7 +1,0 @@
-D:\Development\Github\AutoCollapse\AutoCollapse\bin\Debug\AutoCollapse.dll
-D:\Development\Github\AutoCollapse\AutoCollapse\bin\Debug\AutoCollapse.pdb
-D:\Development\Github\AutoCollapse\AutoCollapse\bin\Debug\AutoCollapse.xml
-D:\Development\Github\AutoCollapse\AutoCollapse\obj\Debug\AutoCollapse.csprojResolveAssemblyReference.cache
-D:\Development\Github\AutoCollapse\AutoCollapse\obj\Debug\AutoCollapse.csproj.ResolveComReference.cache
-D:\Development\Github\AutoCollapse\AutoCollapse\obj\Debug\AutoCollapse.dll
-D:\Development\Github\AutoCollapse\AutoCollapse\obj\Debug\AutoCollapse.pdb
